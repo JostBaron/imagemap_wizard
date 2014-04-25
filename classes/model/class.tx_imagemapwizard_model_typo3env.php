@@ -70,7 +70,9 @@ class tx_imagemapwizard_model_typo3env {
 		} else {
 			$GLOBALS['TSFE'] = t3lib_div::makeInstance('tslib_fe', $GLOBALS['TYPO3_CONF_VARS'], $pid, '0', 0, '', '', '', '');
 		}
-		$GLOBALS['TSFE']->ADMCMD_preview_postInit(array('BEUSER_uid' => $GLOBALS['BE_USER']->user['uid']));
+		if (!t3lib_div::compat_version('6.0')) {
+			$GLOBALS['TSFE']->ADMCMD_preview_postInit(array('BEUSER_uid' => $GLOBALS['BE_USER']->user['uid']));
+		}
 		$GLOBALS['TSFE']->config['config']['language'] = $_GET['L'];
 		$GLOBALS['TSFE']->id = $pid;
 		$GLOBALS['TSFE']->workspacePreview = $GLOBALS['BE_USER']->workspace;

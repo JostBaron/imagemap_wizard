@@ -38,7 +38,7 @@ class tx_imagemapwizard_model_dataObject {
     protected $table;
     protected $mapField;
     protected $backPath;
-    protected $modifiedFlag = false;
+    protected $modifiedFlag = FALSE;
     protected $fieldConf;
 
     /**
@@ -112,18 +112,57 @@ class tx_imagemapwizard_model_dataObject {
     }
 
     /**
+     * Fetches the first file reference from FAL
+     *
+     * @param string $field
+     * @return string|NULL
+     */
+    public function getFalFieldValue($field) {
+        $image = NULL;
+        if (!is_array($this->row)) {
+            return NULL;
+        }
+
+        /** @var t3lib_DB $db */
+        $db = $GLOBALS['TYPO3_DB'];
+        $row = $db->exec_SELECTgetSingleRow(
+            'sys_file.identifier',
+            'sys_file, sys_file_reference',
+            'sys_file.uid = sys_file_reference.uid_local AND ' .
+            'sys_file_reference.uid_foreign = ' . intval($this->row['uid']),
+            '',
+            'sorting_foreign ASC'
+        );
+        if (!$row) return NULL;
+        $identifier = $row['identifier'];
+
+        $someFileIdentifier = $identifier;
+        /** @var \TYPO3\CMS\Core\Resource\StorageRepository $storageRepository */
+        $storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            'TYPO3\\CMS\\Core\\Resource\\StorageRepository'
+        );
+        /** @var \TYPO3\CMS\Core\Resource\ResourceStorage $storage */
+        $storage = $storageRepository->findByUid(1);
+        $file = $storage->getFile($someFileIdentifier);
+
+        return $file->getPublicUrl();
+    }
+
+    /**
      *    Retrives current imagelocation - if multiple files are stored in the field only the first is recognized
      *
      * @param $abs
      * @return string
      */
-    public function getImageLocation($abs = false) {
+    public function getImageLocation($abs = FALSE) {
         $location = '';
         $imageField = $this->determineImageFieldName();
         if ($this->table == 'tt_content' && $imageField == 'image' && t3lib_extMgm::isLoaded('dam_ttcontent') && t3lib_extMgm::isLoaded('dam')) {
             $imageField = 'tx_damttcontent_files';
             $damFiles = tx_dam_db::getReferencedFiles('tt_content', $this->getFieldValue('uid'), $imageField);
             $location = array_pop($damFiles['files']);
+        } elseif (t3lib_div::compat_version('6.0')) {
+            $location = $this->getFalFieldValue($imageField);
         } else {
             if ($this->isFlexField($imageField)) {
                 $path = $this->getFieldConf('config/userImage/uploadfolder');
@@ -141,8 +180,8 @@ class tx_imagemapwizard_model_dataObject {
      */
     public function hasValidImageFile() {
         return $this->getFieldValue('uid') &&
-            is_file($this->getImageLocation(true)) &&
-            is_readable($this->getImageLocation(true));
+            is_file($this->getImageLocation(TRUE)) &&
+            is_readable($this->getImageLocation(TRUE));
     }
 
     /**
@@ -375,7 +414,7 @@ class tx_imagemapwizard_model_dataObject {
     public function useCurrentData($value) {
         $cur = $this->getCurrentData();
         if (!t3lib_div::makeInstance("tx_imagemapwizard_model_mapper")->compareMaps($cur, $value)) {
-            $this->modifiedFlag = true;
+            $this->modifiedFlag = TRUE;
         }
 
         if ($this->isFlexField($this->mapField)) {
