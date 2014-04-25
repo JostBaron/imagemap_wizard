@@ -29,8 +29,6 @@
 
 require_once(t3lib_extMgm::extPath('imagemap_wizard') . 'classes/model/class.tx_imagemapwizard_model_typo3env.php');
 require_once(t3lib_extMgm::extPath('imagemap_wizard') . 'classes/model/class.tx_imagemapwizard_model_mapper.php');
-require_once(PATH_t3lib . 'class.t3lib_stdgraphic.php');
-require_once(PATH_tslib . 'class.tslib_gifbuilder.php');
 
 class tx_imagemapwizard_model_dataObject {
     protected $row;
