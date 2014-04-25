@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>CSH for additional tt_content fields</description>
+        <type>CSH</type>
+        <csh_table>tt_content</csh_table>
+        <fileId>EXT:imagemap_wizard/locallang_csh_ttc.xml</fileId>
+        <labelContext type="array">
+            <languageKey index="tx_imagemapwizard_links.description"></languageKey>
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tx_imagemapwizard_links.description">Configure imagemap setup for the uploaded image.</label>
+        </languageKey>
+    </data>
+</T3locallang>

@@ -1,0 +1,14 @@
+#cat=basic//10; type=boolean; label = use within common items: atm. only the first image can have a imagemap setup, clear Config-Cache after you changed this setting
+allTTCtypes = 0
+
+#cat=basic//10; type=boolean; label = store wizard settings: (not used yet) determines whether wizard-settings should be stored in the user-session
+storeWindowSettings = 1
+
+#cat=basic//10; type=int ; label = maximal image width/height: whenever the image width or height is larger than this value it's scaled down and the zoom option is displayed
+imageMaxWH = 700
+
+#cat=basic//10; type=int ; label = maximal preview-image width/height: maximal size for the preview image
+previewImageMaxWH = 200
+
+#cat=basic//10; type=string ; label = additonal attributes: attributes besides the alt-attribute for each area
+additionalAttributes = title

@@ -1,0 +1,37 @@
+#root { display:block; position:relative; float:left; overflow:visible; }
+.cc { clear:both; }
+.ptr { cursor:pointer; }
+#pic { position:relative; float:left; overflow:visible; }
+#picture { float:left; position:relative; overflow:hidden; padding:4px; margin-right:35px; background:#ffffff; }
+#magnify { position:absolute; right:10px; top:10px; cursor:pointer; }
+#image { }
+#boundingbox { z-index:101; position:absolute; left:-4px; top:-4px; }
+#canvas, .canvas { position:absolute; display:block; width:100%; height:100%; left:0px; top:0px; }
+#canvas { z-index:100; left:4px; top:4px; }
+ .point { width:5px; height:5px; background:#ffffff; border:1px solid #000000; position:absolute; left:0px; top:0px; }
+#actions { float:left; padding:10px 20px 0 20px; width:100%; clear:left; }
+#areaForms { padding:20px 5px 50px 5px; width:590px; float:left; clear:left; }
+.areaForm { position:relative; width: 560px; float:left; clear:left; margin:3px; padding:10px 10px 0 10px; border:1px solid gray; }
+.areaForm .formCoord { width: 35px; text-align:right; margin-right:5px; float:left; }
+.arrow { position:absolute; right:0px; top:0px; border-left:1px solid grey; height:25px; padding:16px 10px 0 10px; }
+.basicOptions { margin-bottom:10px; }
+.basicOptions label { padding:0 0 3px 0; }
+.basicOptions .add { padding:3px 2px 1px 2px; }
+.basicOptions input { padding:2px 0; }
+.moreOptions { padding:10px 0px 10px 0px; border-top:1px dashed gray; }
+.moreOptions .attributes { padding:5px 0px; }
+.moreOptions .attributes .attribute { padding: 1px 0; }
+.moreOptions .attributes label { display:block; float:left; width:90px;  clear:left; padding:2px 0; }
+.moreOptions .attributes input  { display:block; float:left; padding:2px 0; }
+.positionOptions .refresh { float:right; }
+.XYlabel { float:left; width:30px; }
+.coordOpt { float:left; }
+
+.moreOptions .halfLine { float:left; width:230px; padding-right:10px; }
+.colorPreview { border:1px solid #000; float:left; margin-right:5px;margin-top:3px; }
+.colorPreview div { width:10px; height:10px;  border:2px solid #fff; }
+.moreOptions .colorBox { border:1px solid #000; float:left; }
+.moreOptions .colorBox div { width:20px; height:20px;  border:2px solid #fff; }
+.moreOptions .colorPicker { width:168px; height:24px; border:1px solid #000; float:left; margin-left:5px; }
+.moreOptions .colorPickerCell { float:left; width:6px; height:6px; margin:0; border:1px solid white; cursor:pointer; font-size:1px; line-height:1px; }
+
