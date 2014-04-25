@@ -12,7 +12,7 @@ if (TYPO3_MODE=='BE') {
 		tt_content.imagemap_wizard.20.imgMax = 1
 		tt_content.imagemap_wizard.20.maxW >
 		tt_content.imagemap_wizard.20.1.imageLinkWrap >
-		tt_content.imagemap_wizard.20.1.params = usemap="####IMAGEMAP_USEMAP###"
+		tt_content.imagemap_wizard.20.1.params = usemap="#***IMAGEMAP_USEMAP***"
 		tt_content.imagemap_wizard.20.1.stdWrap.postUserFunc = tx_imagemapwizard_parser->applyImageMap
 		tt_content.imagemap_wizard.20.1.stdWrap.postUserFunc.map.data = field:tx_imagemapwizard_links
 		tt_content.imagemap_wizard.20.1.stdWrap.postUserFunc.map.name = field:titleText // field:altText // field:imagecaption // field:header
@@ -29,7 +29,7 @@ if (TYPO3_MODE=='BE') {
 		';
 	}
 
-	t3lib_extMgm::addTypoScript($_EXTKEY,'setup',$typoscript,43);
+	t3lib_extMgm::addTypoScript($_EXTKEY,'setup',$typoscript,'defaultContentRendering');
 
 	t3lib_extMgm::addPageTSConfig('
 		mod.wizards.newContentElement.wizardItems.common.elements.imagemap {

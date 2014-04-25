@@ -49,10 +49,10 @@ class tx_imagemapwizard_parser extends tslib_pibase {
 			$mapname = $converter->createValidNameAttribute($mapname);
 			$map = $converter->generateMap($this->cObj, $mapname, $this->cObj->getData($conf['map.']['data'], $this->cObj->data), $attrlist, $xhtml, $conf, $num);
 			if (!$converter->isEmptyMap($map) || $this->cObj->getData('register:keepUsemapMarker', $this->cObj->data)) {
-				return str_replace('###IMAGEMAP_USEMAP###', $mapname, $content) . $map;
+				return str_replace('***IMAGEMAP_USEMAP***', $mapname, $content) . $map;
 			}
 		}
-		return str_replace(' usemap="####IMAGEMAP_USEMAP###"', '', $content);
+		return str_replace(' usemap="#***IMAGEMAP_USEMAP***"', '', $content);
 	}
 }
 
