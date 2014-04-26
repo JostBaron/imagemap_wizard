@@ -129,7 +129,7 @@ class tx_imagemapwizard_view_wizard extends tx_imagemapwizard_view_abstract {
 			$params['P[fieldChangeFunc][callback]'] = $updateCallback;
 		}
 
-		$link = t3lib_div::linkThisUrl($this->doc->backPath . 'browse_links.php', $params);
+		$link = \TYPO3\CMS\Backend\Utility\BackendUtility::getModuleUrl('wizard_element_browser', $params);
 		return "<a href=\"#\" id=\"" . $linkId . "\" onclick=\"this.blur(); vHWin=window.open('" . $link . "','','height=600,width=500,status=0,menubar=0,scrollbars=1');vHWin.focus();return false;\">" . $this->getIcon("gfx/link_popup.gif", "alt=\"" . $this->getLL('imagemap_wizard.form.area.linkwizard') . "\" title=\"" . $this->getLL('imagemap_wizard.form.area.linkwizard') . "\"") . "</a>";
 	}
 
